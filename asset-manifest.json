@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/static/js/main.eed815d5.js",
-    "index.html": "/index.html",
-    "main.eed815d5.js.map": "/static/js/main.eed815d5.js.map"
+    "main.js": "/h4u-widgets/static/js/main.eed815d5.js",
+    "index.html": "/h4u-widgets/index.html",
+    "main.eed815d5.js.map": "/h4u-widgets/static/js/main.eed815d5.js.map"
   },
   "entrypoints": [
     "static/js/main.eed815d5.js"
