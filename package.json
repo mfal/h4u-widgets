@@ -2,6 +2,11 @@
   "name": "handball4u-widgets",
   "version": "1.0.0",
   "description": "",
+  "author": {
+    "name": "Marco Falkenberg",
+    "email": "marco@mfal.de"
+  },
+  "homepage": "https://mfal.github.io/h4u-widgets",
   "scripts": {
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
