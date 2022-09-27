@@ -9,10 +9,9 @@
   "homepage": "https://mfal.github.io/h4u-widgets",
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
+    "deploy": "yarn build && gh-pages -d build",
     "eject": "react-scripts eject",
     "lint": "eslint --fix .",
-    "predeploy": "npm run build",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
