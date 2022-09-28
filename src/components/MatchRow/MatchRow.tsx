@@ -5,7 +5,7 @@ import { useClubContext } from "../ClubContext";
 import MatchDate from "./components/MatchDate";
 import Arena from "./components/Arena";
 import Fixture from "./components/Fixture";
-import Result from "./components/Result";
+import DetailedMatchResult from "./components/DetailedMatchResult";
 
 interface Props {
   match: Match;
@@ -31,7 +31,7 @@ export const MatchRow: FC<Props> = (props) => {
           <Arena match={match} />
         </li>
         <Fixture match={match} />
-        <Result match={match} />
+        <DetailedMatchResult match={match} />
       </ul>
     </article>
   );
