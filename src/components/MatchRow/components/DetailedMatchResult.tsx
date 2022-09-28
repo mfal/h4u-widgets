@@ -36,11 +36,11 @@ export const DetailedMatchResult: FC<Props> = (props) => {
   );
 
   return (
-    <li className="result">
+    <>
       {emptyResult}
       {resultFirstHalf}
       {resultSecondHalf}
-    </li>
+    </>
   );
 };
 

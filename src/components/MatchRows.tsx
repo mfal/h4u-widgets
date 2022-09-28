@@ -13,7 +13,11 @@ export const MatchRows: FC<Props> = (props) => {
     <MatchRow key={match.id} match={match} />
   ));
 
-  return <>{rows}</>;
+  return (
+    <table className="match-rows">
+      <tbody>{rows}</tbody>
+    </table>
+  );
 };
 
 export default MatchRows;

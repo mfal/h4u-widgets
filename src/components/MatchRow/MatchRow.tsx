@@ -23,16 +23,22 @@ export const MatchRow: FC<Props> = (props) => {
   });
 
   return (
-    <article className={containerClassName}>
-      <ul>
-        <li className="date-arena">
+    <tr className={containerClassName}>
+      <td className="date-arena">
+        <span className="date">
           <MatchDate match={match} />
-          <br />
+        </span>
+        <br />
+        <span className="arena">
           <Arena match={match} />
-        </li>
+        </span>
+      </td>
+      <td>
         <Fixture match={match} />
+      </td>
+      <td>
         <DetailedMatchResult match={match} />
-      </ul>
-    </article>
+      </td>
+    </tr>
   );
 };
