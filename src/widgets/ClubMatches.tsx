@@ -11,7 +11,7 @@ import { ClubContext } from "../components/ClubContext";
 const propsSchema = z.object({
   clubId: numberCoerce(z.number()),
   weekOffset: numberCoerce(z.number().optional()),
-  filter: z.union([z.literal("home"), z.literal("outwards")]).optional()
+  filter: z.union([z.literal("home"), z.literal("away")]).optional()
 });
 
 const ClubMatches: FC<z.infer<typeof propsSchema>> = (props) => {
@@ -27,7 +27,7 @@ const ClubMatches: FC<z.infer<typeof propsSchema>> = (props) => {
   const filteredMatches =
     filter === "home"
       ? clubMatches.getHomeMatches()
-      : filter === "outwards"
+      : filter === "away"
       ? clubMatches.getAwayMatches()
       : clubMatches.matches;
 

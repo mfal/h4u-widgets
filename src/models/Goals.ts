@@ -1,10 +1,10 @@
 export class Goals {
   public home: number;
-  public away: number;
+  public guest: number;
 
-  public constructor(goalsHome: number, goalsAway: number) {
-    this.home = goalsHome;
-    this.away = goalsAway;
+  public constructor(home: number, guest: number) {
+    this.home = home;
+    this.guest = guest;
   }
 }
 

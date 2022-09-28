@@ -17,7 +17,7 @@ export const DetailedMatchResult: FC<Props> = (props) => {
       (
       <MatchResult
         home={result.goalsFirstHalf.home}
-        guest={result.goalsFirstHalf.away}
+        guest={result.goalsFirstHalf.guest}
       />
       )
     </>
@@ -29,7 +29,7 @@ export const DetailedMatchResult: FC<Props> = (props) => {
       <strong>
         <MatchResult
           home={result.goalsSecondHalf?.home}
-          guest={result.goalsSecondHalf?.away}
+          guest={result.goalsSecondHalf?.guest}
         />
       </strong>
     </>
