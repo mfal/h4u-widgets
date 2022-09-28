@@ -6,7 +6,7 @@ interface Props {
   matches: Match[];
 }
 
-export const MatchRows: FC<Props> = (props) => {
+export const MatchesTable: FC<Props> = (props) => {
   const { matches } = props;
 
   const rows = matches.map((match, index) => (
@@ -16,4 +16,4 @@ export const MatchRows: FC<Props> = (props) => {
   return <table className="matches">{rows}</table>;
 };
 
-export default MatchRows;
+export default MatchesTable;

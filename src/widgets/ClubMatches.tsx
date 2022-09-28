@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { MatchesSkeletonView } from "../components/MatchesSkeletonView";
-import MatchRows from "../components/MatchRows";
+import MatchesTable from "../components/MatchesTable";
 import widgetRegistry from "../WidgetRegistry";
 import { z } from "zod";
 import numberCoerce from "../lib/numberCoerce";
@@ -33,7 +33,7 @@ const ClubMatches: FC<z.infer<typeof propsSchema>> = (props) => {
 
   return (
     <ClubContext value={clubMatches.club}>
-      <MatchRows matches={filteredMatches} />
+      <MatchesTable matches={filteredMatches} />
     </ClubContext>
   );
 };
