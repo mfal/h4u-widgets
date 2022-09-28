@@ -17,14 +17,14 @@ export const MatchRow: FC<Props> = (props) => {
   const club = useClubContext();
   const isHomeMatch = match.isHomeMatchOfClub(club);
 
-  const containerClassName = classNames("matchcontainer", {
+  const containerClassName = classNames("match", {
     home: isHomeMatch,
     away: !isHomeMatch
   });
 
   return (
     <tr className={containerClassName}>
-      <td className="date-arena">
+      <td className="dateAndArena">
         <span className="date">
           <MatchDate match={match} />
         </span>

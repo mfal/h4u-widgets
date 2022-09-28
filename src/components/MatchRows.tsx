@@ -14,7 +14,7 @@ export const MatchRows: FC<Props> = (props) => {
   ));
 
   return (
-    <table className="match-rows">
+    <table className="matches">
       <tbody>{rows}</tbody>
     </table>
   );
