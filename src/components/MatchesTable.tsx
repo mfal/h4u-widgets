@@ -13,6 +13,10 @@ export const MatchesTable: FC<Props> = (props) => {
     <MatchRow key={match.id} match={match} />
   ));
 
+  if (rows.length === 0) {
+    return <p className="noMatchesInfo">Keine Spiele in diesem Zeitraum 🌴</p>;
+  }
+
   return (
     <table className="matches">
       <tbody>{rows}</tbody>

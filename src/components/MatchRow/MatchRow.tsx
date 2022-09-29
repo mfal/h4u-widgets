@@ -19,7 +19,9 @@ export const MatchRow: FC<Props> = (props) => {
 
   const containerClassName = classNames("match", {
     home: isHomeMatch,
-    away: !isHomeMatch
+    away: !isHomeMatch,
+    upcoming: match.isUpcoming(),
+    played: match.wasPlayed()
   });
 
   return (
@@ -29,14 +31,16 @@ export const MatchRow: FC<Props> = (props) => {
           <MatchDate match={match} />
         </span>
         <br />
-        <span className="arena">
-          <Arena match={match} />
-        </span>
+        {match.arena && (
+          <span className="arena">
+            <Arena arena={match.arena} />
+          </span>
+        )}
       </td>
-      <td>
+      <td className="fixture">
         <Fixture match={match} />
       </td>
-      <td>
+      <td className="result">
         <DetailedMatchResult match={match} />
       </td>
     </tr>

@@ -17,11 +17,11 @@ export const ScoreTable: FC<Props> = (props) => {
       <tbody>
         {props.entries.map((entry, index) => (
           <tr key={index}>
-            <td>{entry.position}</td>
-            <td>
+            <td className="position">{entry.position}</td>
+            <td className="team">
               <TeamName team={entry.team} />
             </td>
-            <td>
+            <td className="score">
               {entry.score[0]}:{entry.score[1]}
             </td>
           </tr>

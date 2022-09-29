@@ -27,15 +27,21 @@ const mapLeague = (apiLeague: schemas.League): League => {
   );
 };
 
-const mapArena = (apiMatch: schemas.Match): Arena =>
-  new Arena(
-    apiMatch.gGymnasiumName,
-    new Address(
-      apiMatch.gGymnasiumTown,
-      apiMatch.gGymnasiumStreet,
-      apiMatch.gGymnasiumPostal
-    )
-  );
+const mapArena = (apiMatch: schemas.Match): Arena | undefined =>
+  apiMatch.gGymnasiumName
+    ? new Arena(
+        apiMatch.gGymnasiumName,
+        apiMatch.gGymnasiumTown &&
+        apiMatch.gGymnasiumStreet &&
+        apiMatch.gGymnasiumPostal
+          ? new Address(
+              apiMatch.gGymnasiumTown,
+              apiMatch.gGymnasiumStreet,
+              apiMatch.gGymnasiumPostal
+            )
+          : undefined
+      )
+    : undefined;
 
 const mapMatchDate = (apiMatch: schemas.Match): DateTime =>
   DateTime.fromFormat(

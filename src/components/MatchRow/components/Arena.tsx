@@ -1,14 +1,14 @@
 import React, { FC } from "react";
-import Match from "../../../models/Match";
+import * as models from "../../../models";
 
 interface Props {
-  match: Match;
+  arena: models.Arena;
 }
 
 export const Arena: FC<Props> = (props) => {
-  const { match } = props;
+  const { arena } = props;
 
-  return <>{match.arena.name}</>;
+  return <>{arena.name}</>;
 };
 
 export default Arena;
