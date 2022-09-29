@@ -9,6 +9,10 @@ interface Props {
 export const MatchDate: FC<Props> = (props) => {
   const { match } = props;
 
+  if (match.date === undefined) {
+    return null;
+  }
+
   const isInPast = DateTime.now() > match.date;
 
   const isInSameWeek =

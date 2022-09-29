@@ -43,11 +43,16 @@ const mapArena = (apiMatch: schemas.Match): Arena | undefined =>
       )
     : undefined;
 
-const mapMatchDate = (apiMatch: schemas.Match): DateTime =>
-  DateTime.fromFormat(
+const mapMatchDate = (apiMatch: schemas.Match): DateTime | undefined => {
+  const dateTime = DateTime.fromFormat(
     `${apiMatch.gDate} - ${apiMatch.gTime}`,
     "dd.MM.yy - hh:mm"
   );
+
+  const date = DateTime.fromFormat(apiMatch.gDate, "dd.MM.yy");
+
+  return dateTime.isValid ? dateTime : date.isValid ? date : undefined;
+};
 
 const mapGoals = (home?: number, guest?: number): Goals | undefined => {
   if (home !== undefined && guest !== undefined) {

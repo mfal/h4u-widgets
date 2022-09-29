@@ -8,7 +8,7 @@ export class Match {
   public readonly id: string;
   public readonly homeTeam: Team;
   public readonly guestTeam: Team;
-  public readonly date: DateTime;
+  public readonly date: DateTime | undefined;
   public readonly arena?: Arena;
   public readonly result?: MatchResult;
 
@@ -16,7 +16,7 @@ export class Match {
     id: string,
     homeTeam: Team,
     guestTeam: Team,
-    date: DateTime,
+    date: DateTime | undefined,
     arena: Arena | undefined,
     result?: MatchResult
   ) {
@@ -33,11 +33,11 @@ export class Match {
   }
 
   public wasPlayed(): boolean {
-    return this.date < DateTime.now();
+    return !!this.date && this.date < DateTime.now();
   }
 
   public isUpcoming(): boolean {
-    return this.date > DateTime.now();
+    return !!this.date && this.date > DateTime.now();
   }
 }
 
