@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/h4u-widgets/static/js/main.8d6d83b1.js",
+    "main.js": "/h4u-widgets/main.js",
     "index.html": "/h4u-widgets/index.html",
-    "main.8d6d83b1.js.map": "/h4u-widgets/static/js/main.8d6d83b1.js.map"
+    "main.js.map": "/h4u-widgets/main.js.map"
   },
   "entrypoints": [
-    "static/js/main.8d6d83b1.js"
+    "main.js"
   ]
 }
