@@ -11,3 +11,5 @@ export const leagueMatchesResponse = z
     })
   )
   .min(1);
+
+export type LeagueMatchesResponse = z.infer<typeof leagueMatchesResponse>;

@@ -1,9 +1,8 @@
 import { DateTime } from "luxon";
 import * as responseSchemas from "./schemas/responses";
-import * as schemas from "./schemas/components";
-import { TableEntry } from "./schemas/components";
-import { mapClubMatches } from "./mappings";
-import ClubMatches from "../models/ClubMatches";
+import * as models from "../models";
+import * as mappings from "./mappings";
+import { mapClubMatches, mapScoreTable } from "./mappings";
 import ky from "ky";
 
 const handball4all = ky.create({
@@ -11,7 +10,9 @@ const handball4all = ky.create({
 });
 
 export class ApiClient {
-  public async getTable(classId: number): Promise<TableEntry[]> {
+  public async getScoreTableEntries(
+    classId: number
+  ): Promise<models.ScoreTableEntry[]> {
     const response = await handball4all
       .get("if_g_json.php", {
         searchParams: {
@@ -21,10 +22,12 @@ export class ApiClient {
       })
       .json();
 
-    return responseSchemas.tableResponse.parse(response)[0].content.score;
+    return mapScoreTable(responseSchemas.tableResponse.parse(response));
   }
 
-  public async getLeagueMatches(classId: number): Promise<schemas.Match[]> {
+  public async getLeagueMatches(
+    classId: number
+  ): Promise<models.LeagueMatches> {
     const response = await handball4all
       .get("if_g_json.php", {
         searchParams: {
@@ -35,14 +38,15 @@ export class ApiClient {
       })
       .json();
 
-    return responseSchemas.leagueMatchesResponse.parse(response)[0].content
-      .futureGames.games;
+    return mappings.mapLeagueMatches(
+      responseSchemas.leagueMatchesResponse.parse(response)
+    );
   }
 
   public async getMatchResults(
     club: number,
     offset = 0
-  ): Promise<ClubMatches> {
+  ): Promise<models.ClubMatches> {
     const startOfWeek = DateTime.local()
       .startOf("week")
       .plus({ week: offset })

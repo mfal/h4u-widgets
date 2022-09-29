@@ -10,3 +10,5 @@ export const tableResponse = z
     })
   )
   .min(1);
+
+export type ScoreTableResponse = z.infer<typeof tableResponse>;

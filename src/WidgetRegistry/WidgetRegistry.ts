@@ -1,10 +1,10 @@
-import { ComponentType, ReactElement } from "react";
+import { ComponentType, ReactNode } from "react";
 import invariant from "invariant";
 import { z } from "zod";
 
 interface WidgetRegistryEntry {
   component: ComponentType<any>;
-  loadingView?: ReactElement;
+  loadingView?: ReactNode;
   propsSchema: z.ZodTypeAny;
 }
 
@@ -23,7 +23,7 @@ export class WidgetRegistry {
   public register<TSchema extends z.ZodTypeAny>(
     type: string,
     component: ComponentType<z.infer<TSchema>>,
-    loadingView: ReactElement,
+    loadingView: ReactNode,
     propsSchema: TSchema
   ): void {
     invariant(

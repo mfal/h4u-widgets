@@ -3,9 +3,9 @@ import Club from "./Club";
 
 export class Team {
   public readonly name: string;
-  public readonly league: League;
+  public readonly league?: League;
 
-  public constructor(name: string, league: League) {
+  public constructor(name: string, league?: League) {
     this.name = name;
     this.league = league;
   }
@@ -15,7 +15,7 @@ export class Team {
   }
 
   public getClubRelativeName(club: Club): string {
-    if (!this.isOfClub(club)) {
+    if (!this.isOfClub(club) || !this.league) {
       return this.name;
     }
 

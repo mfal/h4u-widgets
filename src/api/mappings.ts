@@ -1,3 +1,4 @@
+import * as models from "../models";
 import * as schemas from "./schemas/components";
 import * as responseSchemas from "./schemas/responses";
 import Match from "../models/Match";
@@ -13,10 +14,7 @@ import Goals from "../models/Goals";
 import ClubMatches from "../models/ClubMatches";
 import Club from "../models/Club";
 
-const mapLeague = (
-  apiLeague: schemas.League,
-  apiMatch: schemas.Match
-): League => {
+const mapLeague = (apiLeague: schemas.League): League => {
   const gender = new Gender(apiLeague.gClassGender);
 
   const ageClass = new AgeClass(apiLeague.gClassAGsDesc);
@@ -63,17 +61,11 @@ const mapMatchResult = (apiMatch: schemas.Match): MatchResult | undefined => {
   }
 };
 
-const mapMatch = (
-  apiLeague: schemas.League,
-  apiMatch: schemas.Match
-): Match => {
-  const league = mapLeague(apiLeague, apiMatch);
-
+const mapMatch = (apiMatch: schemas.Match, league?: models.League): Match => {
   return new Match(
     apiMatch.gID,
     new Team(apiMatch.gHomeTeam, league),
     new Team(apiMatch.gGuestTeam, league),
-    league,
     mapMatchDate(apiMatch),
     mapArena(apiMatch),
     mapMatchResult(apiMatch)
@@ -88,7 +80,7 @@ export const mapClubMatches = (
   const matches = apiResult[0].content.classes.reduce<Match[]>(
     (allMatches, apiLeague) => {
       const matchesOfLeague = apiLeague.games.map((apiMatch) =>
-        mapMatch(apiLeague, apiMatch)
+        mapMatch(apiMatch, mapLeague(apiLeague))
       );
 
       allMatches.push(...matchesOfLeague);
@@ -99,4 +91,26 @@ export const mapClubMatches = (
   );
 
   return new ClubMatches(club, matches);
+};
+
+export const mapLeagueMatches = (
+  apiResult: responseSchemas.LeagueMatchesResponse
+): models.LeagueMatches => {
+  return new models.LeagueMatches(
+    apiResult[0].content.actualGames.map((match) => mapMatch(match)),
+    apiResult[0].content.futureGames.games.map((match) => mapMatch(match))
+  );
+};
+
+export const mapScoreTable = (
+  apiResult: responseSchemas.ScoreTableResponse
+): models.ScoreTableEntry[] => {
+  return apiResult[0].content.score.map(
+    (score) =>
+      new models.ScoreTableEntry(
+        new Team(score.tabTeamname),
+        [score.pointsPlus, score.pointsMinus],
+        score.tabScore
+      )
+  );
 };
