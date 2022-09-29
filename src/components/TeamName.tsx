@@ -11,10 +11,12 @@ export const TeamName: FC<Props> = (props) => {
   const isClubTeam = team.isOfClub(club);
 
   const textContent = team.getClubRelativeName(club);
+
   if (isClubTeam) {
-    return <strong>{textContent}</strong>;
+    return <strong className="team">{textContent}</strong>;
   }
-  return <>{textContent}</>;
+
+  return <span className="team">{textContent}</span>;
 };
 
 export default TeamName;
