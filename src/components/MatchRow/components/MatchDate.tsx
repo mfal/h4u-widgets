@@ -20,7 +20,7 @@ export const MatchDate: FC<Props> = (props) => {
   const isInSameWeek =
     match.date.startOf("week") === DateTime.now().startOf("week");
 
-  const isTimeSet = match.date.startOf("day") === match.date;
+  const isTimeSet = match.date.startOf("day") !== match.date;
 
   const formats: Array<[boolean, string]> = [
     [isInPast, "ccc, dd.MM.yy"],
