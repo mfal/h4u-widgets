@@ -10,23 +10,27 @@ export const DetailedMatchResult: FC<Props> = (props) => {
   const { match } = props;
   const result = match.result;
 
-  const emptyResult = !result && <MatchResult />;
+  const emptyResult = !result && (
+    <span className="emptyResult">
+      <MatchResult />
+    </span>
+  );
 
   const resultFirstHalf = result && (
-    <>
+    <span className="firstHalf">
       (
       <MatchResult
         home={result.goalsFirstHalf.home}
         guest={result.goalsFirstHalf.guest}
       />
       )
-    </>
+    </span>
   );
 
   const resultSecondHalf = result && (
     <>
       &nbsp;
-      <strong>
+      <strong className="secondHalf">
         <MatchResult
           home={result.goalsSecondHalf?.home}
           guest={result.goalsSecondHalf?.guest}
