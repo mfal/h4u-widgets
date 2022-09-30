@@ -17,7 +17,7 @@ export const DetailedMatchResult: FC<Props> = (props) => {
   );
 
   const resultFirstHalf = result && (
-    <span className="firstHalf">
+    <span className="half first">
       (
       <MatchResult
         home={result.goalsFirstHalf.home}
@@ -29,8 +29,8 @@ export const DetailedMatchResult: FC<Props> = (props) => {
 
   const resultSecondHalf = result && (
     <>
-      &nbsp;
-      <strong className="secondHalf">
+      {" "}
+      <strong className="half second">
         <MatchResult
           home={result.goalsSecondHalf?.home}
           guest={result.goalsSecondHalf?.guest}
