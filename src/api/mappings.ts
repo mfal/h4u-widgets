@@ -121,6 +121,7 @@ export const mapScoreTable = (
       new models.ScoreTableEntry(
         new Team(score.tabTeamname),
         [score.pointsPlus, score.pointsMinus],
+        [score.numGoalsShot, score.numGoalsGot],
         score.tabScore
       )
   );
