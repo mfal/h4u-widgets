@@ -13,6 +13,7 @@ export const ScoreTable: FC<Props> = (props) => {
         <th>#</th>
         <th>Team</th>
         <th>Punkte</th>
+        <th>Tore</th>
       </thead>
       <tbody>
         {props.entries.map((entry, index) => (
